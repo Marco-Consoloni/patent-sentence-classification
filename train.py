@@ -12,7 +12,7 @@ from src.model import PatentClassifier
 def main():
 
     # Set seed for reproducibility
-    seed = 199
+    seed = 1999
     pl.seed_everything(seed)
 
     # Set device
@@ -47,7 +47,7 @@ def main():
         ModelCheckpoint(
             monitor='val_loss',
             mode='min',
-            dirpath='/home/fantoni/patent-sentence-classification/checkpoints',
+            dirpath='/home/fantoni/patent-sentence-classification/models',
             filename='best-checkpoint',
             save_top_k=1, # if 1, saves only the best checkpoint based on the monitored metric.
             verbose=True,
@@ -87,11 +87,12 @@ def main():
     # Convert BERT base model to Lightning module
     model = PatentClassifier(model=base_model, tokenizer=bert_tokenizer).to(device)
 
-    # Start Train and Test
+    # Perform Train and Test
     trainer.fit(model, train_dl, eval_dl)
     trainer.test(model, test_dl)
 
-    wandb.finish() # terminate run on wandb
+    # Terminate run on wandb
+    wandb.finish() 
     print('Training and testing completed.')
 
 if __name__ == "__main__":
