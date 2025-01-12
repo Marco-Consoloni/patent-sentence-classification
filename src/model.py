@@ -2,9 +2,12 @@ import torch
 import pytorch_lightning as pl
 #from transformers import AdamW
 
+from src.config import load_config
+
 class PatentClassifier(pl.LightningModule):
     def __init__(self, model, tokenizer, learning_rate=2e-5):
         super().__init__()
+        self.cfg = load_config()
         self.model = model
         self.tokenizer = tokenizer
         #self.learning_rate = learning_rate

@@ -1,6 +1,7 @@
 import pytorch_lightning as pl
 import wandb
 import torch
+import time
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
 from pytorch_lightning.loggers import WandbLogger
 from transformers import BertTokenizer, BertForSequenceClassification
@@ -52,7 +53,7 @@ def main():
         ModelCheckpoint(
             monitor='val_loss',
             mode='min',
-            dirpath='/home/fantoni/patent-sentence-classification/models',
+            dirpath='/app/models',
             filename='best-checkpoint',
             save_top_k=1, # if 1, saves only the best checkpoint based on the monitored metric.
             verbose=True,
@@ -60,7 +61,7 @@ def main():
         EarlyStopping(
             monitor='val_loss',
             mode='min', # stop training when the monitored metric stops decreasing 
-            patience=3, # the training will continue for up to 3 epochs without improvement in the monitored metric before stopping.
+            patience=5, # the training will continue for up to N epochs without improvement in the monitored metric before stopping.
             verbose=True
         )
     ]
@@ -77,30 +78,30 @@ def main():
         log_every_n_steps=1,
         val_check_interval=cfg.train.validate_every,  # if set to 1, validate only once per epoch
         check_val_every_n_epoch=1,
-        #limit_train_batches=0.01,  # Use only 1% of training data to test training
-        #limit_val_batches=0.01,    # Use only 1% of validation data to test training
     )
 
     # Freeze BERT base model parameters
-    for param in base_model.parameters():
-        param.requires_grad = False
+    #for param in base_model.parameters():
+    #    param.requires_grad = False
 
     # Unfreeze classifier head parameters
-    for param in base_model.classifier.parameters():
-        param.requires_grad = True
+    #for param in base_model.classifier.parameters():
+    #    param.requires_grad = True
 
     # Convert BERT base model to Lightning module
     model = PatentClassifier(model=base_model, tokenizer=bert_tokenizer).to(device)
 
     # Perform Train 
+    start_time = time.time()
     trainer.fit(model, train_dl, eval_dl)
+    end_time = time.time()
+    print(f"Total training time: {(end_time-start_time)/60:.2f} min")
     
     # Perfrom Test
     trainer.test(model, test_dl)
-
+    
     # Terminate run on wandb
     wandb.finish() 
-    print('Training and testing completed.')
 
 if __name__ == "__main__":
     main()
