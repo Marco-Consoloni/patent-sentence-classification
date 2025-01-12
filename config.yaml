@@ -1,0 +1,36 @@
+
+data:
+  train_path: /home/fantoni/patent-sentence-classification/data/train.xlsx
+  validation_path: /home/fantoni/patent-sentence-classification/data/eval.xlsx
+  test_path: /home/fantoni/patent-sentence-classification/data/test.xlsx
+
+model:
+  name: anferico/bert-for-patents # https://huggingface.co/anferico/bert-for-patents
+  num_lables: 4 # {'FUN': 0, 'STR': 1, 'MIX': 2, 'OTH': 3}
+  max_length: 512
+
+optimizer:
+  name: Adam
+  args:
+    lr: 2e-5
+    weight_decay: 0.01
+
+train:
+  seed: 1999 # if -1, it generates a random seed internally.
+  batch_size: 8
+  num_workers: 0 # if 0, data loading is sequential. if > 0 allows parallel loading.
+  use_gpu: true
+  gpus: 1
+  max_epochs: 10
+  validate_every: 0.1
+
+validation:
+  batch_size: 8
+  num_workers: 0
+
+test:
+  batch_size: 8
+  num_workers: 0
+
+wandb:
+  project: patent-sentence-classification
