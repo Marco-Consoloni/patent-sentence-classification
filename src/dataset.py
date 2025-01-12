@@ -3,7 +3,7 @@ import pandas as pd
 from torch.utils.data import Dataset
 
 class PatentDataset(Dataset):
-    def __init__(self, file_path, tokenizer, max_length=512):
+    def __init__(self, file_path, tokenizer, max_length):
         self.data = pd.read_excel(file_path)
         self.tokenizer = tokenizer
         self.max_length = max_length
