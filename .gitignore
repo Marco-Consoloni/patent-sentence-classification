@@ -1,2 +1,5 @@
+# Ignore model checkpoint
 models/
+
+# Ignore __pycache__
 src/__pycache__
