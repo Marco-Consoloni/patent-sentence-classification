@@ -19,15 +19,9 @@ class PatentClassifier(pl.LightningModule):
         }
         
         # Create metric instances for each stage
-        self.train_metrics = torch.nn.ModuleDict({
-            f"train_{k}": v.clone() for k, v in metrics.items()
-        })
-        self.val_metrics = torch.nn.ModuleDict({
-            f"val_{k}": v.clone() for k, v in metrics.items()
-        })
-        self.test_metrics = torch.nn.ModuleDict({
-            f"test_{k}": v.clone() for k, v in metrics.items()
-        })
+        self.train_metrics = torch.nn.ModuleDict({f"train_{k}": v.clone() for k, v in metrics.items()})
+        self.val_metrics = torch.nn.ModuleDict({f"val_{k}": v.clone() for k, v in metrics.items()})
+        self.test_metrics = torch.nn.ModuleDict({f"test_{k}": v.clone() for k, v in metrics.items()})
 
     def forward(self, **inputs):
         return self.model(**inputs)
