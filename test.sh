@@ -12,5 +12,6 @@ docker run \
     -v ./data:/app/data \
     -v ./models:/app/models \
     -v ./results:/app/results\
+    -v ./patents:/app/patents \
     patent-sentence-classification:latest \
     test.py

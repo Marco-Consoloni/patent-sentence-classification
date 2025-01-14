@@ -27,7 +27,7 @@ def main(input_path, output_filename = 'results_new'):
     loaded_model.to(device)
     print('\nModel loaded succesfully.')
 
-    # Perferom inference iterating over each text input
+    # Perform inference iterating over each text input
     df = pd.read_excel(input_path)
     results = []
     for idx, text in enumerate(df['sent']):
@@ -59,7 +59,7 @@ def main(input_path, output_filename = 'results_new'):
     merged_df.to_excel(f'/app/results/{output_filename}.xlsx', index=False)
 
 if __name__ == "__main__":
-    input_path = '/app/data/CN214409472U.xlsx' # set input path
-    output_filename = 'results_new' # set name of the output file
+    input_path = '/app/patents/US11122843B2.xlsx' # set input path
+    output_filename = 'US11122843B2' # set name of the output file
     main(input_path, output_filename)
 
