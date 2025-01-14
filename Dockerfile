@@ -8,6 +8,7 @@ RUN pip install -r requirements.txt
 COPY src /app/src
 COPY train.py .
 COPY config.yaml .
+COPY test.py .
 
 ENTRYPOINT ["python"]
 CMD ["train.py"]
