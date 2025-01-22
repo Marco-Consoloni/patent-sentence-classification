@@ -4,7 +4,7 @@ from torchmetrics import Precision, Recall, F1Score
 
 from src.config import load_config
 
-class PatentClassifier(pl.LightningModule):
+class PatentSentenceClassifier(pl.LightningModule):
     def __init__(self, model, tokenizer):
         super().__init__()
         self.cfg = load_config()

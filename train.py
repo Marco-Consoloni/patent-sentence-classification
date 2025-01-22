@@ -10,7 +10,7 @@ from omegaconf import OmegaConf
 
 from src.config import load_config
 from src.dataset import PatentDataset
-from src.model import PatentClassifier
+from src.model import PatentSentenceClassifier
 
 
 def main():
@@ -80,6 +80,7 @@ def main():
         check_val_every_n_epoch=1,
     )
 
+    '''Uncomment the following lines to finetune only the classification head of the base model.'''
     # Freeze BERT base model parameters
     #for param in base_model.parameters():
     #    param.requires_grad = False
@@ -89,7 +90,7 @@ def main():
     #    param.requires_grad = True
 
     # Convert BERT base model to Lightning module
-    model = PatentClassifier(model=base_model, tokenizer=bert_tokenizer).to(device)
+    model = PatentSentenceClassifier(model=base_model, tokenizer=bert_tokenizer).to(device)
 
     # Perform Train 
     start_time = time.time()
