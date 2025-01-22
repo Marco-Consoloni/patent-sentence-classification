@@ -61,7 +61,7 @@ def main():
         EarlyStopping(
             monitor='val_loss',
             mode='min', # stop training when the monitored metric stops decreasing 
-            patience=5, # the training will continue for up to N epochs without improvement in the monitored metric before stopping.
+            patience=5, # the training will continue for up to N steps without improvement in the monitored metric before stopping.
             verbose=True
         )
     ]

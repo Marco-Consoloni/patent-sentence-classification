@@ -170,6 +170,11 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+
+
+
+
+
 # Ignore model checkpoint
 models/
 
@@ -177,5 +182,5 @@ models/
 src/__pycache__
 
 # Ignore results and data
-results/
-patents/
+/results
+/patents

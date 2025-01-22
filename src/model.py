@@ -22,15 +22,15 @@ class PatentClassifier(pl.LightningModule):
         self.train_metrics = torch.nn.ModuleDict({f"train_{k}": v.clone() for k, v in metrics.items()})
         self.val_metrics = torch.nn.ModuleDict({f"val_{k}": v.clone() for k, v in metrics.items()})
         self.test_metrics = torch.nn.ModuleDict({f"test_{k}": v.clone() for k, v in metrics.items()})
-
-    def forward(self, **inputs):
-        return self.model(**inputs)
     
     def _compute_metrics(self, metrics, preds, labels):
         for name, metric in metrics.items():
             value = metric(preds, labels)
             self.log(name, value, on_step=False, on_epoch=True)
 
+    def forward(self, **inputs):
+        return self.model(**inputs)
+    
     def training_step(self, batch, batch_idx):
         outputs = self.model(**batch)
         self.log('train_loss', outputs.loss, prog_bar=True)
