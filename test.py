@@ -1,6 +1,6 @@
 import torch
 from transformers import BertTokenizer, BertForSequenceClassification
-from src.model import PatentClassifier
+from src.model import PatentSentenceClassifier
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -22,7 +22,7 @@ def main(input_path, output_filename = 'results_new'):
 
     # Load Finetuned Patent Model
     checkpoint_path = '/app/models/best-checkpoint.ckpt'
-    loaded_model = PatentClassifier.load_from_checkpoint(checkpoint_path, model=base_model, tokenizer=bert_tokenizer)
+    loaded_model = PatentSentenceClassifier.load_from_checkpoint(checkpoint_path, model=base_model, tokenizer=bert_tokenizer)
     loaded_model.eval()
     loaded_model.to(device)
     print('\nModel loaded succesfully.')
