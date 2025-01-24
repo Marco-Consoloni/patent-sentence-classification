@@ -184,3 +184,4 @@ src/__pycache__
 # Ignore results and data
 /results
 /patents
+/data/probing
