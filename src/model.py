@@ -50,6 +50,24 @@ class PatentSentenceClassifier(pl.LightningModule):
         self.log('test_loss', outputs.loss, prog_bar=True)
         return outputs.loss
     
+    #def configure_optimizers(self):
+    #    optimizer = getattr(torch.optim, self.cfg.optimizer.name)
+    #    return optimizer(self.parameters(), **self.cfg.optimizer.args)
+    
     def configure_optimizers(self):
-        optimizer = getattr(torch.optim, self.cfg.optimizer.name)
-        return optimizer(self.parameters(), **self.cfg.optimizer.args)
+        optimizer = getattr(torch.optim, self.cfg.optimizer.name)(
+            self.parameters(), **self.cfg.optimizer.args
+        )
+
+        # Learning rate scheduler
+        scheduler = {
+            'scheduler': torch.optim.lr_scheduler.StepLR(
+                optimizer, 
+                step_size=self.cfg.scheduler.step_size, 
+                gamma=self.cfg.scheduler.gamma
+            ),
+            'interval': 'epoch',  # Update the scheduler every epoch
+            'monitor': 'val_loss'  # Monitor validation loss for scheduling
+        }
+
+        return {'optimizer': optimizer, 'lr_scheduler': scheduler}

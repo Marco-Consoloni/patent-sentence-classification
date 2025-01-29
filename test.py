@@ -57,9 +57,10 @@ def main(input_path, output_filename = 'results_new'):
     results_df = pd.DataFrame(results)
     merged_df = pd.merge(df, results_df, on='sent_id', how='right') # merge with original dataframe
     merged_df.to_excel(f'/app/results/{output_filename}.xlsx', index=False)
+    print('\nResults saved successfully.')
 
 if __name__ == "__main__":
-    input_path = '/app/patents/US11122843B2.xlsx' # set input path
-    output_filename = 'US11122843B2' # set name of the output file
-    main(input_path, output_filename)
+    #input_path = '/app/patents/US11122843B2.xlsx' # set input path
+    input_path = '/app/data/test.xlsx' # set input path
+    main(input_path, output_filename = 'results_stratified')
 

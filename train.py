@@ -78,6 +78,7 @@ def main():
         log_every_n_steps=1,
         val_check_interval=cfg.train.validate_every,  # if set to 1, validate only once per epoch
         check_val_every_n_epoch=1,
+        enable_progress_bar=True,
     )
 
     '''Uncomment the following lines to finetune only the classification head of the base model.'''
