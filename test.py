@@ -60,7 +60,7 @@ def main(input_path, output_filename = 'results_new'):
     print('\nResults saved successfully.')
 
 if __name__ == "__main__":
-    #input_path = '/app/patents/US11122843B2.xlsx' # set input path
-    input_path = '/app/data/test.xlsx' # set input path
-    main(input_path, output_filename = 'results_stratified')
+    input_path = '/app/patents/CN214409472U.xlsx' # set input path
+    #input_path = '/app/data/test.xlsx' # set input path
+    main(input_path, output_filename = 'results_CN214409472U')
 

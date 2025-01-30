@@ -1,6 +1,6 @@
 #!/bin/sh
 
-docker build . -t patent-sentence-classification:latest 
+#docker build . -t patent-sentence-classification:latest 
 
 docker run \
     -it \
@@ -13,5 +13,6 @@ docker run \
     -v ./models:/app/models \
     -v ./results:/app/results\
     -v ./patents:/app/patents \
+    -v ./test.py:/app/test.py \
     patent-sentence-classification:latest \
     test.py

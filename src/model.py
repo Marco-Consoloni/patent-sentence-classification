@@ -13,9 +13,9 @@ class PatentSentenceClassifier(pl.LightningModule):
 
         # Initialize metrics for each stage
         metrics = {
-            'precision': Precision(task='multiclass', num_classes=self.cfg.model.num_lables, average='micro'),
-            'recall': Recall(task='multiclass', num_classes=self.cfg.model.num_lables, average='micro'),
-            'f1': F1Score(task='multiclass', num_classes=self.cfg.model.num_lables, average='micro'),
+            'precision': Precision(task='multiclass', num_classes=self.cfg.model.num_lables, average='weighted'),
+            'recall': Recall(task='multiclass', num_classes=self.cfg.model.num_lables, average='weighted'),
+            'f1': F1Score(task='multiclass', num_classes=self.cfg.model.num_lables, average='weighted'),
         }
         
         # Create metric instances for each stage
