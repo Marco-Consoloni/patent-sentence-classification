@@ -173,8 +173,6 @@ cython_debug/
 
 
 
-
-
 # Ignore model checkpoint
 models/
 
@@ -184,4 +182,8 @@ src/__pycache__
 # Ignore results and data
 /results
 /patents
-/data/probing
+/prompting/results
+
+# Ignore all data except for .jsonl
+data/*
+!data/*.jsonl
