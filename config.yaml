@@ -1,13 +1,14 @@
 
 data:
-  train_path: /app/data/train.xlsx
-  validation_path: /app/data/eval.xlsx
-  test_path: /app/data/test.xlsx
+  train_path: /app/data/train_agreement.xlsx
+  validation_path: /app/data/eval_agreement.xlsx
+  test_path: /app/data/test_agreement.xlsx
 
 model:
-  name: anferico/bert-for-patents # https://huggingface.co/anferico/bert-for-patents
+  name: anferico/bert-for-patents # https://huggingface.co/anferico/bert-for-patents 
   num_lables: 4 # {'FUN': 0, 'STR': 1, 'MIX': 2, 'OTH': 3}
   max_length: 512
+  checkpoint: '/app/models/bert-for-patents-agreement.ckpt'
 
 optimizer:
   name: Adam
