@@ -26,6 +26,7 @@ def main():
     print(f"Using device: {device}")
 
     # load tokenizer and base_model
+    print(f"Using model: '{cfg.model.name}'")
     bert_tokenizer = BertTokenizer.from_pretrained(cfg.model.name)
     base_model = BertForSequenceClassification.from_pretrained(cfg.model.name, num_labels=cfg.model.num_lables)
 
@@ -97,7 +98,10 @@ def main():
     start_time = time.time()
     trainer.fit(model, train_dl, eval_dl)
     end_time = time.time()
-    print(f"Total training time: {(end_time-start_time)/60:.2f} min")
+    training_time = end_time - start_time
+    print(f"training time: {training_time:.2f} sec")
+    print(f"training time: {(training_time)/60:.2f} min")
+    wandb.log({"training time (sec)": training_time})
     
     # Perfrom Test
     trainer.test(model, test_dl)

@@ -18,14 +18,13 @@ def main(input_path, output_filename = 'results_new'):
     # load Tokenizer and Base Model
     bert_tokenizer = BertTokenizer.from_pretrained(cfg.model.name)
     base_model = BertForSequenceClassification.from_pretrained(cfg.model.name, num_labels=cfg.model.num_lables)
-    print('\nTokenizer and Base Model loaded succesfully.')
+    print(f"\nTokenizer and Base Model loaded succesfully. Using: '{cfg.model.name}'")
 
     # Load Finetuned Patent Model
-    checkpoint_path = '/app/models/best-checkpoint.ckpt'
-    loaded_model = PatentSentenceClassifier.load_from_checkpoint(checkpoint_path, model=base_model, tokenizer=bert_tokenizer)
+    loaded_model = PatentSentenceClassifier.load_from_checkpoint(cfg.model.checkpoint, model=base_model, tokenizer=bert_tokenizer)
     loaded_model.eval()
     loaded_model.to(device)
-    print('\nModel loaded succesfully.')
+    print(f"\nModel loaded succesfully. Using: '{cfg.model.checkpoint}'")
 
     # Perform inference iterating over each text input
     df = pd.read_excel(input_path)
@@ -56,11 +55,12 @@ def main(input_path, output_filename = 'results_new'):
     # Convert results to a DataFrame 
     results_df = pd.DataFrame(results)
     merged_df = pd.merge(df, results_df, on='sent_id', how='right') # merge with original dataframe
-    merged_df.to_excel(f'/app/results/{output_filename}.xlsx', index=False)
-    print('\nResults saved successfully.')
+    output_path = f'/app/results/finetuning/{output_filename}.xlsx'
+    merged_df.to_excel(output_path, index=False)
+    print(f"\nResults saved successfully to: '{output_path}'")
 
 if __name__ == "__main__":
-    input_path = '/app/patents/CN214409472U.xlsx' # set input path
-    #input_path = '/app/data/test.xlsx' # set input path
-    main(input_path, output_filename = 'results_CN214409472U')
+    #input_path = '/app/patents/CN214409472U.xlsx' # set input path
+    input_path = '/app/data/test_agreement.xlsx' # set input path
+    main(input_path)
 
