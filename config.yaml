@@ -8,7 +8,7 @@ model:
   name: anferico/bert-for-patents # https://huggingface.co/anferico/bert-for-patents 
   num_lables: 4 # {'FUN': 0, 'STR': 1, 'MIX': 2, 'OTH': 3}
   max_length: 512
-  checkpoint: '/app/models/bert-for-patents-agreement.ckpt'
+  checkpoint: '/app/models/bert-for-patents-agreement.ckpt' # used in test.py
 
 optimizer:
   name: Adam
@@ -29,6 +29,8 @@ train:
   gpus: 1
   max_epochs: 10
   validate_every: 0.1
+  save_dir: '/app/models'
+  save_name: 'best-checkpoint'
 
 validation:
   batch_size: 64
@@ -37,6 +39,8 @@ validation:
 test:
   batch_size: 64
   num_workers: 0
+  save_dir: '/app/results'
+  save_name: 'results_new'
 
 wandb:
   project: patent-sentence-classification

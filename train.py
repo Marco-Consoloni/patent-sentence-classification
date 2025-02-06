@@ -34,9 +34,9 @@ def main():
     train_ds = PatentDataset(file_path=cfg.data.train_path, tokenizer=bert_tokenizer, max_length=cfg.model.max_length)
     eval_ds = PatentDataset(file_path=cfg.data.validation_path, tokenizer=bert_tokenizer, max_length=cfg.model.max_length)
     test_ds = PatentDataset(file_path =cfg.data.test_path, tokenizer=bert_tokenizer, max_length=cfg.model.max_length)
-    print(f"Train set size: {len(train_ds)}")
-    print(f"Validation set size: {len(eval_ds)}")
-    print(f"Test set size: {len(test_ds)}")
+    print(f"Train set size: {len(train_ds)}. Using: '{cfg.data.train_path}'")
+    print(f"Validation set size: {len(eval_ds)} Using: '{cfg.data.validation_path}'")
+    print(f"Test set size: {len(test_ds)} Using: '{cfg.data.test_path}'")
 
     # Create dataloader
     train_dl = DataLoader(train_ds, batch_size=cfg.train.batch_size, shuffle=True, num_workers=cfg.train.num_workers)
@@ -46,6 +46,7 @@ def main():
     # Initialize wandb logger 
     wandb_logger = WandbLogger(
         project=cfg.wandb.project, # set project name
+        name=cfg.train.save_name,  # Set a custom run name
         config=OmegaConf.to_container(cfg, resolve=True)  # convert config file to dict before logging to wandb
     )
 
@@ -54,8 +55,8 @@ def main():
         ModelCheckpoint(
             monitor='val_loss',
             mode='min',
-            dirpath='/app/models',
-            filename='best-checkpoint',
+            dirpath=cfg.train.save_dir,
+            filename=cfg.train.save_name,
             save_top_k=1, # if 1, saves only the best checkpoint based on the monitored metric.
             verbose=True,
         ),
@@ -102,6 +103,8 @@ def main():
     print(f"training time: {training_time:.2f} sec")
     print(f"training time: {(training_time)/60:.2f} min")
     wandb.log({"training time (sec)": training_time})
+
+    print(f"Model saved to: {cfg.train.save_dir}/{cfg.train.save_name}.ckpt")
     
     # Perfrom Test
     trainer.test(model, test_dl)

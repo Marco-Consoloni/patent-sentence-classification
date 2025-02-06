@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#sdocker build . -t patent-sentence-classification:latest 
+docker build . -t patent-sentence-classification:latest 
 
 docker run \
     -it \
@@ -10,9 +10,13 @@ docker run \
     --gpus all \
     --shm-size=1000gb \
     -v ./data:/app/data \
+    -v ./data/incremental:/app/data/incremental \
     -v ./models:/app/models \
+    -v ./models/incremental:/app/models/incremental \
     -v ./results/finetuning/:/app/results/finetuning/ \
+    -v ./results/incremental/:/app/results/incremental/ \
     -v ./patents:/app/patents \
     -v ./test.py:/app/test.py \
+    -v ./config.yaml:/app/config.yaml \
     patent-sentence-classification:latest \
     test.py "$@"

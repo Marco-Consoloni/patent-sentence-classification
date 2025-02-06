@@ -6,7 +6,7 @@ import pandas as pd
 
 from src.config import load_config
 
-def main(input_path, output_filename = 'results_new'):
+def main(input_path):
 
     # Load config file
     cfg = load_config('config.yaml')
@@ -55,12 +55,12 @@ def main(input_path, output_filename = 'results_new'):
     # Convert results to a DataFrame 
     results_df = pd.DataFrame(results)
     merged_df = pd.merge(df, results_df, on='sent_id', how='right') # merge with original dataframe
-    output_path = f'/app/results/finetuning/{output_filename}.xlsx'
+    output_path = f'{cfg.test.save_dir}/{cfg.test.save_name}.xlsx'
     merged_df.to_excel(output_path, index=False)
     print(f"\nResults saved successfully to: '{output_path}'")
 
 if __name__ == "__main__":
-    #input_path = '/app/patents/CN214409472U.xlsx' # set input path
-    input_path = '/app/data/test_agreement.xlsx' # set input path
+    #input_path = '/app/patents/CN214409472U.xlsx' # set input path to test set
+    input_path = '/app/data/test_agreement.xlsx' # set input path to test set
     main(input_path)
 
