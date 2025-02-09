@@ -290,11 +290,11 @@
 
 # 10--------------------------------------Final 4800-------------------------------------------------------------------------
 
-./train.sh data.train_path=/app/data/incremental/train_10_1.xlsx data.validation_path=/app/data/incremental/eval_10_1.xlsx \
-        model.name=anferico/bert-for-patents train.save_dir=/app/models/incremental/ train.save_name=train_10_1 wandb.project=patent-sentence-classification-incremental
+##./train.sh data.train_path=/app/data/incremental/train_10_1.xlsx data.validation_path=/app/data/incremental/eval_10_1.xlsx \
+##        model.name=anferico/bert-for-patents train.save_dir=/app/models/incremental/ train.save_name=train_10_1 wandb.project=patent-sentence-classification-incremental
 
-./train.sh data.train_path=/app/data/incremental/train_10_2.xlsx data.validation_path=/app/data/incremental/eval_10_2.xlsx \
-        model.name=anferico/bert-for-patents train.save_dir=/app/models/incremental/ train.save_name=train_10_2 wandb.project=patent-sentence-classification-incremental
+##./train.sh data.train_path=/app/data/incremental/train_10_2.xlsx data.validation_path=/app/data/incremental/eval_10_2.xlsx \
+##        model.name=anferico/bert-for-patents train.save_dir=/app/models/incremental/ train.save_name=train_10_2 wandb.project=patent-sentence-classification-incremental
 
 ./train.sh data.train_path=/app/data/incremental/train_10_3.xlsx data.validation_path=/app/data/incremental/eval_10_3.xlsx \
         model.name=anferico/bert-for-patents train.save_dir=/app/models/incremental/ train.save_name=train_10_3 wandb.project=patent-sentence-classification-incremental

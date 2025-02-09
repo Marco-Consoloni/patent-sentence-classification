@@ -8,7 +8,7 @@ docker run \
     --rm \
     --runtime=nvidia \
     --gpus all \
-    --shm-size=1000gb \
+    --shm-size=1500gb \
     -v ./data:/app/data \
     -v ./data/incremental:/app/data/incremental \
     -v ./models:/app/models \
