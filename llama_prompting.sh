@@ -1,5 +1,6 @@
 #!/bin/sh
-docker build . -t llama-prompting
+
+#docker build . -t llama-prompting
 
 docker run \
     -it \
@@ -15,5 +16,7 @@ docker run \
     -v ./patents:/workspace/patents \
     -v ./src:/workspace/src \
     -v ./config.yaml://workspace/config.yaml \
-    -v ./models/huggingface:/root/.cache/huggingface \
+    -v /disk1/huggingface_cache:/root/.cache/huggingface \
     llama-prompting
+
+#-v ./models/huggingface:/root/.cache/huggingface \
