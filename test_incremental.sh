@@ -119,13 +119,19 @@
 
 # 10--------------------------------------Final 4800-------------------------------------------------------------------------
 
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_1.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_1
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_2.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_2
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_3.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_3
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_4.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_4
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_5.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_5
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_6.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_6
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_7.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_7
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_8.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_8
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_9.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_9
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_10.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_10
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_1.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_1
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_2.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_2
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_3.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_3
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_4.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_4
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_5.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_5
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_6.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_6
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_7.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_7
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_8.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_8
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_9.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_9
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/incremental/train_10_10.ckpt test.save_dir=/app/results/incremental test.save_name=test_10_10
+
+# Extra---------------------------------------------------------------------------------------------------------------
+
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/finetuning/bert-for-patents_train_10_7.ckpt test.save_dir=/app/results/finetuning test.save_name=bert-for-patents_test_10_7
+#./test.sh model.name=bert-large-uncased model.checkpoint=/app/models/finetuning/bert-large-uncased_train_10_7.ckpt test.save_dir=/app/results/finetuning test.save_name=bert-large-uncased_test_10_7
+

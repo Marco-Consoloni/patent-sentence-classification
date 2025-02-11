@@ -35,8 +35,8 @@ def main():
     eval_ds = PatentDataset(file_path=cfg.data.validation_path, tokenizer=bert_tokenizer, max_length=cfg.model.max_length)
     test_ds = PatentDataset(file_path =cfg.data.test_path, tokenizer=bert_tokenizer, max_length=cfg.model.max_length)
     print(f"Train set size: {len(train_ds)}. Using: '{cfg.data.train_path}'")
-    print(f"Validation set size: {len(eval_ds)} Using: '{cfg.data.validation_path}'")
-    print(f"Test set size: {len(test_ds)} Using: '{cfg.data.test_path}'")
+    print(f"Validation set size: {len(eval_ds)}. Using: '{cfg.data.validation_path}'")
+    print(f"Test set size: {len(test_ds)}. Using: '{cfg.data.test_path}'")
 
     # Create dataloader
     train_dl = DataLoader(train_ds, batch_size=cfg.train.batch_size, shuffle=True, num_workers=cfg.train.num_workers)
