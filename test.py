@@ -3,10 +3,13 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from src.model import PatentSentenceClassifier
 import matplotlib.pyplot as plt
 import pandas as pd
+import time
 
 from src.config import load_config
 
 def main(input_path):
+
+    start_time = time.time()
 
     # Load config file
     cfg = load_config('config.yaml')
@@ -51,6 +54,10 @@ def main(input_path):
         except Exception as e:
             print(f"Error processing row {idx}: {e}")
             results.append({'text': text, 'error': str(e)})
+    
+    end_time = time.time()
+    testing_time = end_time - start_time
+    print(f"Testing time: {testing_time:.2f} sec")
 
     # Convert results to a DataFrame 
     results_df = pd.DataFrame(results)
