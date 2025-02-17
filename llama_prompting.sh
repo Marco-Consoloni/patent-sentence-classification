@@ -15,8 +15,10 @@ docker run \
     -v ./results:/workspace/results\
     -v ./patents:/workspace/patents \
     -v ./src:/workspace/src \
-    -v ./config.yaml://workspace/config.yaml \
-    -v /disk1/huggingface_cache:/root/.cache/huggingface \
+    -v ./config.yaml:/workspace/config.yaml \
+    -v ./prompting/prompt_components.json:/workspace/prompting/prompt_components.json \
+    -v ./prompting/prompt_templates.json:/workspace/prompting/prompt_templates.json \
+    -v /vast/marco/patent-sentence-classification/huggingface_cache:/root/.cache/huggingface \
     llama-prompting
 
 #-v ./models/huggingface:/root/.cache/huggingface \
