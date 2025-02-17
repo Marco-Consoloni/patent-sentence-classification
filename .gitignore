@@ -187,3 +187,6 @@ src/__pycache__
 # Ignore all data except for .jsonl
 data/*
 !data/*.jsonl
+
+# Ignore prompt templates
+prompting/*.json
