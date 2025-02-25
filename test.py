@@ -7,7 +7,7 @@ import time
 
 from src.config import load_config
 
-def main(input_path):
+def main(test_path):
 
     start_time = time.time()
 
@@ -30,7 +30,7 @@ def main(input_path):
     print(f"\nModel loaded succesfully. Using: '{cfg.model.checkpoint}'")
 
     # Perform inference iterating over each text input
-    df = pd.read_excel(input_path)
+    df = pd.read_excel(test_path)
     results = []
     for idx, text in enumerate(df['sent']):
         try:
@@ -67,7 +67,9 @@ def main(input_path):
     print(f"\nResults saved successfully to: '{output_path}'")
 
 if __name__ == "__main__":
-    #input_path = '/app/patents/CN214409472U.xlsx' # set input path to test set
-    input_path = '/app/data/test_agreement.xlsx' # set input path to test set
-    main(input_path)
+    cfg = load_config('config.yaml')
+    test_path = cfg.data.test_path
+    #test_path = '/app/patents/CN214409472U.xlsx' # set input path to test set
+    #test_path = '/app/data/test_agreement.xlsx' # set input path to test set
+    main(test_path)
 

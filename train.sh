@@ -12,7 +12,7 @@ docker run \
     -v ./data:/app/data \
     -v ./data/incremental:/app/data/incremental \
     -v ./models:/app/models \
-    -v ./models/incremental:/app/models/incremental \
+    -v /vast/marco/patent-sentence-classification/models/incremental:/app/models/incremental \
     -v ./results/finetuning/:/app/results/finetuning/ \
     -v ./results/incremental/:/app/results/incremental/ \
     -v ./train.py:/app/train.py \
@@ -20,3 +20,6 @@ docker run \
     -e WANDB_API_KEY=bd21ffc2680605fb361dbc7bb99f651fe2f4d187 \
     patent-sentence-classification:latest \
     train.py "$@"
+
+
+# -v ./models/incremental:/app/models/incremental \
