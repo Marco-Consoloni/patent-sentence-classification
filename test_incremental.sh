@@ -132,13 +132,14 @@
 
 # Extra---------------------------------------------------------------------------------------------------------------
 
-#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/finetuning/bert-for-patents_train_10_7.ckpt test.save_dir=/app/results/finetuning test.save_name=bert-for-patents_test_10_7
-#./test.sh model.name=bert-large-uncased model.checkpoint=/app/models/finetuning/bert-large-uncased_train_10_7.ckpt test.save_dir=/app/results/finetuning test.save_name=bert-large-uncased_test_10_7
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/finetuning/bert-for-patents_train_10_7.ckpt test.save_dir=/app/results/patents test.save_name=US20200074811A1_G07F17 data.test_path=/app/data/patents/US20200074811A1_G07F17.xlsx
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/finetuning/bert-for-patents_train_10_7.ckpt test.save_dir=/app/results/patents test.save_name=US11673469B2_B60K37 data.test_path=/app/data/patents/US11673469B2_B60K37.xlsx
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/finetuning/bert-for-patents_train_10_7.ckpt test.save_dir=/app/results/patents test.save_name=US11133720B2_H02K3 data.test_path=/app/data/patents/US11133720B2_H02K3.xlsx
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/finetuning/bert-for-patents_train_10_7.ckpt test.save_dir=/app/results/patents test.save_name=US9468782B2_A62B23 data.test_path=/app/data/patents/US9468782B2_A62B23.xlsx
-./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/finetuning/bert-for-patents_train_10_7.ckpt test.save_dir=/app/results/patents test.save_name=US8695121B2_A42B3 data.test_path=/app/data/patents/US8695121B2_A42B3.xlsx
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/finetuning/bert-for-patents_train_10_7.ckpt test.save_dir=/app/results/finetuning test.save_name=bert-for-patents-test-10-7
+#./test.sh model.name=bert-large-uncased model.checkpoint=/app/models/finetuning/bert-large-uncased_train_10_7.ckpt test.save_dir=/app/results/finetuning test.save_name=bert-large-uncased-test-10-7
+
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/finetuning/bert-for-patents_train_10_7.ckpt test.save_dir=/app/results/patents test.save_name=US20200074811A1_G07F17 data.test_path=/app/data/patents/US20200074811A1_G07F17.xlsx
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/finetuning/bert-for-patents_train_10_7.ckpt test.save_dir=/app/results/patents test.save_name=US11673469B2_B60K37 data.test_path=/app/data/patents/US11673469B2_B60K37.xlsx
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/finetuning/bert-for-patents_train_10_7.ckpt test.save_dir=/app/results/patents test.save_name=US11133720B2_H02K3 data.test_path=/app/data/patents/US11133720B2_H02K3.xlsx
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/finetuning/bert-for-patents_train_10_7.ckpt test.save_dir=/app/results/patents test.save_name=US9468782B2_A62B23 data.test_path=/app/data/patents/US9468782B2_A62B23.xlsx
+#./test.sh model.name=anferico/bert-for-patents model.checkpoint=/app/models/finetuning/bert-for-patents_train_10_7.ckpt test.save_dir=/app/results/patents test.save_name=US8695121B2_A42B3 data.test_path=/app/data/patents/US8695121B2_A42B3.xlsx
 
 
 
