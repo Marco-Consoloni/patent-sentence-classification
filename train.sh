@@ -1,6 +1,7 @@
 #!/bin/sh
 
-#docker build . -t patent-sentence-classification:latest 
+#docker build . -t patent-sentence-classification:latest
+#docker build . --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t patent-sentence-classification:latest 
 
 docker run \
     -it \
@@ -18,6 +19,7 @@ docker run \
     -v ./train.py:/app/train.py \
     -v ./config.yaml:/app/config.yaml \
     -e WANDB_API_KEY=bd21ffc2680605fb361dbc7bb99f651fe2f4d187 \
+    --user $(id -u):$(id -g) \
     patent-sentence-classification:latest \
     train.py "$@"
 

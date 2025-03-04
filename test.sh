@@ -1,6 +1,7 @@
 #!/bin/sh
 
 #docker build . -t patent-sentence-classification:latest 
+#docker build . --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t patent-sentence-classification:latest 
 
 docker run \
     -it \
@@ -20,7 +21,9 @@ docker run \
     -v ./patents:/app/patents \
     -v ./test.py:/app/test.py \
     -v ./config.yaml:/app/config.yaml \
+    --user $(id -u):$(id -g) \
     patent-sentence-classification:latest \
     test.py "$@"
+
 
 # -v ./models/incremental:/app/models/incremental \
