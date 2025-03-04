@@ -10,9 +10,10 @@ docker run \
     --shm-size=1000gb \
     -p 8888:8888 \
     -v ./data:/workspace/data \
-    -v ./models:/workspace/models \
+    -v ./data/patents:/workspace/data/patents \
+    -v ./models/finetuning:/workspace/models/finetuning \
+    -v ./models/incremental:/workspace/models/incremental \
     -v ./results:/workspace/results\
-    -v ./patents:/workspace/patents \
     -v ./src:/workspace/src \
     -v ./config.yaml://workspace/config.yaml \
     interpretability

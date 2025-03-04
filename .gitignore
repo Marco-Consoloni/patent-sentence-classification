@@ -181,7 +181,6 @@ src/__pycache__
 
 # Ignore results and data
 /results
-/patents
 /prompting/results
 
 # Ignore all data except for .jsonl
