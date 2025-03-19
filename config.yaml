@@ -35,6 +35,7 @@ train:
 validation:
   batch_size: 64
   num_workers: 0
+  early_stopping: True
 
 test:
   batch_size: 64
