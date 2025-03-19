@@ -57,16 +57,22 @@ def main():
             mode='min',
             dirpath=cfg.train.save_dir,
             filename=cfg.train.save_name,
-            save_top_k=1, # if 1, saves only the best checkpoint based on the monitored metric.
+            save_top_k=1,  # if 1, saves only the best checkpoint based on the monitored metric.
             verbose=True,
-        ),
-        EarlyStopping(
-            monitor='val_loss',
-            mode='min', # stop training when the monitored metric stops decreasing 
-            patience=5, # the training will continue for up to N steps without improvement in the monitored metric before stopping.
-            verbose=True
         )
     ]
+
+    # Conditionally add EarlyStopping callback if enabled
+    if cfg.validation.early_stopping:
+        print("Early stopping is disabled. Training will continue without early termination.")
+        callbacks.append(
+            EarlyStopping(
+                monitor='val_loss',
+                mode='min',  # stop training when the monitored metric stops decreasing 
+                patience=5,  # the training will continue for up to N steps without improvement in the monitored metric before stopping.
+                verbose=True
+            )
+        )
 
     # Set up Trainer
     accelerator = "gpu" if (torch.cuda.is_available() and cfg.train.use_gpu) else "cpu"
