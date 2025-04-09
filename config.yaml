@@ -36,6 +36,7 @@ validation:
   batch_size: 64
   num_workers: 0
   early_stopping: True
+  patience: 10
 
 test:
   batch_size: 64

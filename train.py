@@ -64,15 +64,19 @@ def main():
 
     # Conditionally add EarlyStopping callback if enabled
     if cfg.validation.early_stopping:
-        print("Early stopping is disabled. Training will continue without early termination.")
+        print(f"Early stopping is enabled. Using patience: {cfg.validation.patience}")
         callbacks.append(
             EarlyStopping(
                 monitor='val_loss',
                 mode='min',  # stop training when the monitored metric stops decreasing 
-                patience=5,  # the training will continue for up to N steps without improvement in the monitored metric before stopping.
+                patience=cfg.validation.patience,  # the training will continue for up to N steps without improvement in the monitored metric before stopping.
                 verbose=True
             )
         )
+    else:
+        print("Early stopping is disabled. Training will continue without early termination.")
+
+
 
     # Set up Trainer
     accelerator = "gpu" if (torch.cuda.is_available() and cfg.train.use_gpu) else "cpu"
