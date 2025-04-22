@@ -318,3 +318,10 @@
 
 #./train.sh data.train_path=/app/data/incremental/train_10_10.xlsx data.validation_path=/app/data/incremental/eval_10_10.xlsx \
 #    model.name=anferico/bert-for-patents train.save_dir=/app/models/incremental/ train.save_name=train_10_10 wandb.project=patent-sentence-classification-incremental
+
+# Extra -------------------------------------------------------------------------------------------------
+./train.sh data.train_path=/app/data/incremental/train_10_4.xlsx data.validation_path=/app/data/incremental/eval_10_4.xlsx \
+    model.name=anferico/bert-for-patents train.save_dir=/app/models/finetuning/ train.save_name=bert-for-patents_train_10_4 wandb.project=patent-sentence-classification
+
+./train.sh data.train_path=/app/data/incremental/train_10_4.xlsx data.validation_path=/app/data/incremental/eval_10_4.xlsx \
+    model.name=bert-large-uncased train.save_dir=/app/models/finetuning/ train.save_name=bert-large-uncased_train_10_4 wandb.project=patent-sentence-classification
